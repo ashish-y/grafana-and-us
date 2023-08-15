@@ -1,0 +1,152 @@
+{
+  "datasource": {
+    "type": "marcusolsson-static-datasource",
+    "uid": "tjZpF6XVz"
+  },
+  "gridPos": {
+    "h": 14,
+    "w": 14,
+    "x": 5,
+    "y": 0
+  },
+  "id": 18,
+  "options": {
+    "everyRow": false,
+    "editors": [
+      "styles",
+      "helpers"
+    ],
+    "editor": {
+      "language": "html",
+      "format": "auto",
+      "height": 200
+    },
+    "content": "{{#each data}}\n<div class=\"accordion\">\n  <table>\n    <tr>\n      <td style=\"text-align:left;\">\n        {{Name}}\n      </td>\n    </tr>\n  </table>\n</div>\n<div class=\"panel\">\n  <table width=100%>\n    <tr class=\"heading\">\n      <th>DOB</th>\n      <th>LOCATION</th>\n      <th>PHONE</th>\n      <th>Contact</th>\n    </tr>\n    <tr>\n      <td style=\"min-width:20%;text-align:left;\">\n        <div style=\"min-height:40px;\">\n          <p style=\"margin:15px\">\n            <b> {{DOB}}</b>\n          </p>\n        </div>\n      </td>\n      <td style=\"min-width:15%;text-align:left;\">\n        <div style=\"min-height:40px;\">\n          <p style=\"margin:15px\">\n            {{Location}}\n          </p>\n        </div>\n      </td>\n      <td style=\"min-width:10%;text-align:left;\">\n        <div style=\"min-height:40px;\">\n          <p style=\"margin:15px\">\n            {{Phone}}\n          </p>\n        </div>\n      </td>\n      <td style=\"min-width:10%;text-align:left;\">\n        <div style=\"min-height:40px;\">\n          <p style=\"margin:15px\">\n            <a href=\"#\"> <img src=\"https://toppng.com/uploads/preview/email-icon-vector-circle-11549825158ieiklzfl8g.png\" alt=\"support\" width=\"40px\" >\n          </p>\n        </div>\n      </td>\n    </tr>\n  </table>\n</div>\n{{/each}}",
+    "defaultContent": "The query didn't return any results.",
+    "helpers": "$(document).ready(function () {\n  var acc = document.getElementsByClassName(\"accordion\");\n  var i;\n  for (i = 0; i < acc.length; i++) {\n    acc[i].addEventListener(\"click\", function () {\n      this.classList.toggle(\"active\");\n      var panel = this.nextElementSibling;\n      if (panel.style.maxHeight) {\n        panel.style.maxHeight = null;\n      } else {\n        panel.style.maxHeight = panel.scrollHeight + \"px\";\n      }\n    });\n  }\n})\n",
+    "styles": ".accordion table {\n  width: 97%;\n  border: none;\n}\n\n.accordion td {\n  border: none;\n}\n\n.accordion {\n  font: normal normal bold 24px/28px Trebuchet MS;\n  background-color: #2D3136;\n  color: #C8C9D8;\n  cursor: pointer;\n  text-transform: uppercase;\n  padding: 12px;\n  width: 100%;\n  border: 2px solid #939393;\n  text-align: left;\n  outline: none;\n  font-size: 15px;\n  transition: 0.4s;\n}\n\n.active,\n.accordion:hover {\n  background-color: #23272C;\n}\n\n.heading th {\n  color: #C8C9D8;\n  padding: 8px;\n  background-color: #23272C;\n  text-align: center;\n}\n\ntable,\nth,\ntd {\n  border-right: 2px solid;\n  border-left: 2px solid;\n  border-bottom: 2px solid;\n\n\n}\n\n\n.accordion:before {\n  content: '\\002B';\n  color: #4F585D;\n  font-weight: bold;\n  float: right;\n  margin-left: 15px;\n  margin-top: 5px;\n}\n\n.active:before {\n  content: \"\\2212\";\n}\n\n.panel {\n  padding: 0 0px;\n  background-color: #171B1F;\n  max-height: 0;\n  overflow: hidden;\n  transition: max-height 0.2s ease-out;\n  font-size: 12px;\n}\n\np {\n  color: #C8C9D8;\n  text-align: center;\n  font-size: 15px;\n}"
+  },
+  "pluginVersion": "9.1.5",
+  "targets": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "tjZpF6XVz"
+      },
+      "frame": {
+        "fields": [
+          {
+            "config": {},
+            "name": "Name",
+            "type": "string",
+            "values": [
+              "Ash",
+              "Jack",
+              "Mike"
+            ]
+          },
+          {
+            "config": {},
+            "name": "DOB",
+            "type": "string",
+            "values": [
+              "Dec 29 1989",
+              "Jan 5 1956",
+              "Jun 7 1987"
+            ]
+          },
+          {
+            "config": {},
+            "name": "Location",
+            "type": "string",
+            "values": [
+              "Medford, MA",
+              "Austin, TX",
+              "Boston, MA"
+            ]
+          },
+          {
+            "config": {},
+            "name": "Phone",
+            "type": "string",
+            "values": [
+              "123-234-3456",
+              "987-654-3421",
+              "456-248-1203"
+            ]
+          }
+        ],
+        "meta": {},
+        "name": "Table"
+      },
+      "refId": "A"
+    }
+  ],
+  "title": "JS Fancy Accordian",
+  "transformations": [
+    {
+      "id": "convertFieldType",
+      "options": {
+        "conversions": [
+          {
+            "destinationType": "number",
+            "targetField": "Error_Code"
+          }
+        ],
+        "fields": {}
+      }
+    },
+    {
+      "id": "merge",
+      "options": {}
+    },
+    {
+      "id": "filterByValue",
+      "options": {
+        "filters": [
+          {
+            "config": {
+              "id": "isNull",
+              "options": {}
+            },
+            "fieldName": "Cause"
+          },
+          {
+            "config": {
+              "id": "isNull",
+              "options": {}
+            },
+            "fieldName": "Count"
+          }
+        ],
+        "match": "any",
+        "type": "exclude"
+      }
+    },
+    {
+      "id": "organize",
+      "options": {
+        "excludeByName": {},
+        "indexByName": {},
+        "renameByName": {
+          "Error_Code": "",
+          "Parts_Number": "",
+          "_time": "Date"
+        }
+      }
+    },
+    {
+      "id": "sortBy",
+      "options": {
+        "fields": {},
+        "sort": [
+          {
+            "desc": true,
+            "field": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "type": "marcusolsson-dynamictext-panel"
+}
